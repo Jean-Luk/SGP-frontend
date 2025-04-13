@@ -1,7 +1,9 @@
-import { FaMagnifyingGlass, FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { api } from '../services/api.js'
 import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
+import CardPedaco from "../components/CardPedaco.jsx";
+import { Link } from "react-router-dom";
 
 export default function App () {
 
@@ -18,7 +20,7 @@ export default function App () {
     setTipo(responseTipo.data);
 
     const responseCor = await api.get("/cores/listar")
-    setCor(responseCor.data[responsePedaco.data.idCor])
+    setCor(responseCor.data[responsePedaco.data.idCor] || "N/A")
 
   }
 
@@ -41,11 +43,22 @@ export default function App () {
   <p><span className="font-medium">Tamanho:</span> {pedaco?.tamanho} metros</p>
   <p><span className="font-medium">Cor:</span> {cor}</p>
 
-  <button
-  className='bg-green-500 w-7 h-7 flex items-center justify-center rounded-lg absolute bottom-2 right-2 cursor-pointer'
-  >
-    <FaArrowUpRightFromSquare size={18} color='#FFF' />
-  </button>
+  {pedaco?.status === "retirado" ? (
+                    <button
+                        className='bg-gray-400 w-7 h-7 flex items-center justify-center rounded-lg absolute bottom-2 right-2'
+                    >
+                        <FaArrowUpRightFromSquare size={18} color='#FFF' />
+                    </button>
+            ) : (
+                <Link to={"/retirarPedaco/" + pedaco?._id}>
+                    <button
+                        className='bg-green-500 w-7 h-7 flex items-center justify-center rounded-lg absolute bottom-2 right-2 cursor-pointer'
+                    >
+                        <FaArrowUpRightFromSquare size={18} color='#FFF' />
+                    </button>
+                </Link>
+
+            )}
   </article>
   </main>
   </div>
