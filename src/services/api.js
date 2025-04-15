@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+const port = import.meta.env.VITE_PORT || 8080;
+const host = import.meta.env.VITE_HOST || "localahost";
+
 export const api = axios.create({
-    baseURL:"http://localhost:8080"
-})
+  baseURL: `http://${host}:${port}`
+});
