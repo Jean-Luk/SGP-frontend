@@ -98,16 +98,18 @@ export default function App () {
               placeholder="Digite o tamanho em metros..."
               className="w-full mb-5 p-2 rounded bg-white"
               ref={tamanhoRef}
+              step="any"
               />
             </section>
             <section  className='w-full'>
-              <label className="font-medium text-white">Margem %:</label>
+              <label className="font-medium text-white">Margem:</label>
               <input 
               type="number" 
               placeholder="Digite a margem de diferença..."
               className="w-full mb-5 p-2 rounded bg-white"
               ref={margemRef}
-              defaultValue={10}
+              defaultValue={1}
+              step="any"
               />
           </section>
           </span>
@@ -127,7 +129,8 @@ export default function App () {
             <CardPedaco 
             tipo={tipos[tipos.findIndex(tipo => tipo._id === pedaco.idTipo)]?.nome} 
             cor={tipos[tipos.findIndex(tipo => tipo._id === pedaco.idTipo)]?.possuiCores ? cores[pedaco.idCor] : "N/A"}
-            pedaco={pedaco} />
+            pedaco={pedaco} 
+            key={pedaco._id} />
           ))}
 
         </section>
