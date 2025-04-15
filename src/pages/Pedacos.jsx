@@ -139,7 +139,8 @@ export default function App () {
             <CardPedaco 
             tipo={tipos[tipos.findIndex(tipo => tipo._id === pedaco.idTipo)]?.nome} 
             cor={tipos[tipos.findIndex(tipo => tipo._id === pedaco.idTipo)]?.possuiCores ? cores[pedaco.idCor] : "N/A"}
-            pedaco={pedaco} />
+            pedaco={pedaco}
+            key={pedaco._id} />
           ))}
 
         </section>

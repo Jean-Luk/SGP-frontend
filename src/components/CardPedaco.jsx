@@ -4,7 +4,6 @@ import { FaMagnifyingGlass, FaArrowUpRightFromSquare } from "react-icons/fa6";
 const CardPedaco = (prop) => {
     return (
         <article
-            key={prop.pedaco?._id}
             className="w-full bg-white rounded p-2 relative hover:scale-102 duration-200">
 
             <h1 className="text-2xl">{prop.tipo}</h1>
