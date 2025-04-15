@@ -1,7 +1,6 @@
 const CardVendedor = (prop) => {
     return (
         <article
-            key={prop.vendedor._id}
             className="w-full bg-white rounded p-2 relative hover:scale-102 duration-200">
 
             <h1 className="text-2xl">{prop.vendedor?.nome}</h1>

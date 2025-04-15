@@ -82,6 +82,7 @@ export default function App () {
 
           {tipos.map((tipo) => (
             <CardTipo 
+            key={tipo._id}
             tipo={tipo} />
           ))}
 

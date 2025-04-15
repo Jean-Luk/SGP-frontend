@@ -86,6 +86,7 @@ export default function App() {
 
           {vendedores.map((vendedor) => (
             <CardVendedor
+              key={vendedor._id}
               vendedor={vendedor} />
           ))}
 
