@@ -55,6 +55,8 @@ export default function App () {
         pin: pinRef.current?.value
       })
       
+      tamanhoRef.current.value = "";
+
       setErro(false);
       setPedacos(todosPedacos => [...todosPedacos, response.data.result])
     } catch (err) {
@@ -102,6 +104,7 @@ export default function App () {
           placeholder="Digite o tamanho em metros..."
           className="w-full mb-5 p-2 rounded bg-white"
           ref={tamanhoRef}
+          step="any"
           />
 
           <hr className="border-white border-t mb-4"></hr>
