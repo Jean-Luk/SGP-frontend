@@ -67,7 +67,7 @@ export default function App() {
             ref={codRef} />
           <label className="font-medium text-white">PIN:</label>
           <input
-            type="text"
+            type="password"
             placeholder="Crie um PIN..."
             className="w-full mb-5 p-2 rounded bg-white"
             ref={pinRef} />
