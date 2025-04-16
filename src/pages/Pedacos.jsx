@@ -58,7 +58,7 @@ export default function App () {
       tamanhoRef.current.value = "";
 
       setErro(false);
-      setPedacos(todosPedacos => [...todosPedacos, response.data.result])
+      setPedacos(todosPedacos => [response.data.result, ...todosPedacos])
     } catch (err) {
       setErro(err.response?.data?.erro || "Ocorreu um erro. Tente novamente mais tarde")
     }
