@@ -1,8 +1,9 @@
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { api } from '../services/api.js'
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CardPedaco from "../components/CardPedaco.jsx";
+import CardEntrada from "../components/CardEntrada.jsx";
+import CardRetirada from "../components/CardRetirada.jsx";
 import { Link } from "react-router-dom";
 
 export default function App () {
@@ -16,12 +17,11 @@ export default function App () {
     const responsePedaco = await api.get("/pedacos/buscar/" + id);
     setPedaco(responsePedaco.data);
 
-    const responseTipo = await api.get("/tipos/buscar/" + responsePedaco.data.idTipo)
+    const responseTipo = await api.get("/tipos/buscar/" + responsePedaco.data.idTipo);
     setTipo(responseTipo.data);
 
-    const responseCor = await api.get("/cores/listar")
-    setCor(responseCor.data[responsePedaco.data.idCor] || "N/A")
-
+    const responseCor = await api.get("/cores/listar");
+    setCor(responseCor.data[responsePedaco.data.idCor] || "N/A");
   }
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function App () {
     <main className="my-10 w-full md:max-w-2xl">
 
     <article 
-    className="w-full bg-white rounded p-2 relative">
+    className="w-full bg-white rounded p-2 relative mb-4">
 
   <h1 className="text-2xl">{tipo?.nome}</h1>
   <p><span className="font-medium">Tamanho:</span> {pedaco?.tamanho} metros</p>
@@ -60,6 +60,16 @@ export default function App () {
 
             )}
   </article>
+  <CardEntrada 
+    idPedaco={id}
+  />
+  {pedaco?.status === "retirado" && (
+    <>
+      <CardRetirada 
+        idPedaco={id}
+      />
+    </>
+  )}
   </main>
   </div>
 

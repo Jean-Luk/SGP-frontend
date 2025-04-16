@@ -21,11 +21,6 @@ export default function App() {
   const codRef = useRef(null)
   const pinRef = useRef(null)
 
-  const handleChange = (setter) => (event) => {
-    setter(event.target.value);
-  }
-
-
   async function handleSubmit(event) {
     event.preventDefault()
 
