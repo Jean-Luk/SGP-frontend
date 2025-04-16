@@ -38,14 +38,14 @@ export default function App () {
   async function handleSubmit(event) {
     event.preventDefault()
 
-    if(!tipoSelecionado || !tamanhoRef.current?.value || !margemRef.current?.value) return setErro("Preencha todos os campos");
+    if(!tipoSelecionado || !tamanhoRef.current?.value) return setErro("Preencha todos os campos");
 
     try {
       const response = await api.post("/pedacos/buscar", {
         idTipo: tipoSelecionado,
         tamanho: tamanhoRef.current?.value,
         idCor: corSelecionada,
-        percMargem: margemRef.current?.value,
+        margem: margemRef.current?.value,
       })
       
       setErro(false);
@@ -105,10 +105,9 @@ export default function App () {
               <label className="font-medium text-white">Margem:</label>
               <input 
               type="number" 
-              placeholder="Digite a margem de diferença..."
+              placeholder="Digite a margem em metros..."
               className="w-full mb-5 p-2 rounded bg-white"
               ref={margemRef}
-              defaultValue={1}
               step="any"
               />
           </section>
